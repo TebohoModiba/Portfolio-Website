@@ -819,20 +819,89 @@ button { cursor: pointer; font-family: var(--sans); }
     height: 144px;
     border-radius: 14px;
   }
+}
 
-  /* ── Contact item layout ── */
-.contact-item {
+
+/* ── Contact Cards ── */
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.contact-card {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--social-bg);
+  text-decoration: none;
+  color: var(--text-h);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
-/* WhatsApp link colour */
-.contact-whatsapp {
+.contact-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.contact-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.contact-card-whatsapp .contact-card-icon {
+  background: rgba(37, 211, 102, 0.1);
   color: #25d366;
 }
-.contact-whatsapp:hover {
-  opacity: 0.8;
-  text-decoration: underline;
+
+.contact-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
 }
+
+.contact-card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.contact-card-sub {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.contact-card-arrow {
+  font-size: 18px;
+  color: var(--text);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.contact-card:hover .contact-card-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+.contact-card-whatsapp:hover .contact-card-arrow {
+  color: #25d366;
+}
+
+/* Contact cards responsive */
+@media (max-width: 480px) {
+  .contact-card { padding: 18px; gap: 14px; }
+  .contact-card-icon { width: 44px; height: 44px; border-radius: 10px; }
+  .contact-card-title { font-size: 15px; }
 }
