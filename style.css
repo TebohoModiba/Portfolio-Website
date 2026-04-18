@@ -931,3 +931,37 @@ button { cursor: pointer; font-family: var(--sans); }
 .floating-github:hover {
   transform: scale(1.12);
 }
+
+/* Force dark mode on entire page when .dark is present */
+html.dark,
+html.dark body,
+body.dark {
+  background: var(--bg-gradient) !important;
+}
+
+/* Ensure all elements inherit the correct text/border colors */
+html.dark *,
+body.dark * {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* Make sure root container doesn't block the body background */
+#root {
+  background: transparent !important;
+}
+
+/* Smooth skill bar transition (fixes animation) */
+.bar-fill {
+  transition: width 1.4s ease;
+}
+
+/* Floating GitHub button responsive fix */
+@media (max-width: 768px) {
+  .floating-github {
+    width: 44px;
+    height: 44px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
