@@ -13,6 +13,21 @@ function Home({ navigate }) {
     return () => clearInterval(interval);
   }, []);
 
+  // Trigger skill bar widths after mount (for transition)
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      document.querySelectorAll('.bar-fill').forEach((bar) => {
+        const parent = bar.closest('.skill-bar');
+        const levelSpan = parent?.querySelector('.skill-info span:last-child');
+        if (levelSpan) {
+          const width = levelSpan.innerText.replace('%', '');
+          bar.style.width = width + '%';
+        }
+      });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const skills = [
     { name: "React / React Native", level: 90 },
     { name: "Firebase", level: 85 },
@@ -24,7 +39,6 @@ function Home({ navigate }) {
 
   return (
     <div className="home">
-      {/* HERO */}
       <section className="hero">
         <div className="hero-photo-wrap">
           <img src="assets/profile.jpg" alt="Teboho Modiba" className="hero-photo" />
@@ -49,7 +63,6 @@ function Home({ navigate }) {
         </div>
       </section>
 
-      {/* SKILLS */}
       <section className="skills">
         <h2>Skills</h2>
         <div className="skills-container">
@@ -60,20 +73,13 @@ function Home({ navigate }) {
                 <span>{skill.level}%</span>
               </div>
               <div className="bar-bg">
-                <div 
-                  className="bar-fill" 
-                  style={{ 
-                    width: `${skill.level}%`, 
-                    animationDelay: `${index * 120}ms` 
-                  }}
-                ></div>
+                <div className="bar-fill" style={{ width: '0%' }}></div>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* PROJECTS PREVIEW */}
       <section className="projects-preview">
         <h2>Featured Projects</h2>
         <p>Some of my recent work</p>
@@ -82,7 +88,6 @@ function Home({ navigate }) {
         </button>
       </section>
 
-      {/* CTA */}
       <section className="cta">
         <h2>Let's build something great</h2>
         <button className="btn-primary" onClick={() => navigate("contact")}>
