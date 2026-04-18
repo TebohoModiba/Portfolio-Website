@@ -9,7 +9,7 @@ function App() {
 
   const navigate = (newPage) => {
     if (newPage === page || animating) return;
-
+    if (timeoutRef.current) clearTimeout(timeoutRef.current); // cleanup previous
     setAnimating(true);
     timeoutRef.current = setTimeout(() => {
       setDisplayPage(newPage);
@@ -35,16 +35,12 @@ function App() {
   return (
     <div id="root-inner">
       <Navbar page={page} navigate={navigate} />
-      
       <main className="main-content">
         <div className={`page-wrapper ${animating ? "page-exit" : "page-enter"}`}>
           {renderPage()}
         </div>
       </main>
-
       <Footer navigate={navigate} />
-
-      {/* Floating GitHub Button */}
       <a 
         href="https://github.com/TebohoModiba" 
         target="_blank" 
