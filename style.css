@@ -782,3 +782,68 @@ button { cursor: pointer; font-family: var(--sans); }
   .footer-bottom { flex-direction: column; gap: 4px; }
   .footer-dot { display: none; }
 }
+
+/* Tech Filters */
+.tech-filters {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--accent-border);
+  background: transparent;
+  color: var(--accent);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Project Links */
+.project-links {
+  margin-top: 16px;
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.project-link {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* Featured on Home */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.featured-card {
+  background: var(--social-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: left;
+}
+
+.featured-card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
