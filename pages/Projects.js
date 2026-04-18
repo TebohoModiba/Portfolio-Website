@@ -2,27 +2,27 @@ function Projects() {
   const allProjects = [
     {
       title: "Portfolio Website",
-      description: "This very portfolio you're looking at — clean, modern, and fully responsive.",
+      description: "This modern portfolio website with smooth animations, dark mode, and interactive elements.",
       tech: "React, HTML, CSS, JavaScript",
       github: "https://github.com/TebohoModiba/Portfolio-Website",
       demo: "https://tebohomodiba.github.io/Portfolio-Website/"
     },
     {
       title: "Haven App",
-      description: "Mental health app with mood tracking, journaling, and AI chat support.",
+      description: "Mental health app with mood tracking, journaling and AI chat support.",
       tech: "React Native, Firebase",
       github: "https://github.com/TebohoModiba/Haven"
     },
     {
       title: "NCD React Website",
-      description: "Modern business website for Nako Creative Design with smooth animations.",
+      description: "Professional business website for Nako Creative Design with smooth animations.",
       tech: "React, HTML, CSS, JavaScript",
       github: "https://github.com/TebohoModiba/NCD-React-Website",
       demo: "https://nakocreativedesigns.co.za/"
     },
     {
       title: "Habit Tracker",
-      description: "Beautiful mobile app to build and track daily habits with AI suggestions.",
+      description: "Mobile habit building app with AI-powered suggestions and progress tracking.",
       tech: "React Native, MongoDB, C#",
       github: "https://github.com/TebohoModiba/Habit-Tracker"
     },
@@ -31,15 +31,14 @@ function Projects() {
       description: "Lightweight Customer Relationship Management web application.",
       tech: "React, MongoDB",
       github: "https://github.com/TebohoModiba/Mini-CRM-website"
-
+    }
   ];
 
   const [filter, setFilter] = React.useState("All");
+  const techs = ["All", "React", "React Native", "MongoDB", "Firebase"];
 
-  const techs = ["All", "React", "React Native", "Firebase", "C#"];
-
-  const filteredProjects = allProjects.filter(project => 
-    filter === "All" || project.tech.includes(filter)
+  const filteredProjects = allProjects.filter(p => 
+    filter === "All" || p.tech.includes(filter)
   );
 
   return (
@@ -47,7 +46,6 @@ function Projects() {
       <h1>My Projects</h1>
       <p className="projects-subtitle">A collection of things I've built</p>
 
-      {/* Tech Filter */}
       <div className="tech-filters">
         {techs.map(t => (
           <button
@@ -61,14 +59,13 @@ function Projects() {
       </div>
 
       <div className="project-grid">
-        {filteredProjects.map((p) => (
+        {filteredProjects.map(p => (
           <ProjectCard
             key={p.title}
             title={p.title}
             description={p.description}
             tech={p.tech}
             github={p.github}
-            demo={p.demo}
           />
         ))}
       </div>
